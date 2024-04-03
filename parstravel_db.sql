@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2024 at 01:35 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 03, 2024 at 01:05 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,14 +42,55 @@ CREATE TABLE `bookings` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cities`
+--
+
+CREATE TABLE `cities` (
+  `city_id` int(11) NOT NULL,
+  `city_name` varchar(256) NOT NULL,
+  `country_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cities`
+--
+
+INSERT INTO `cities` (`city_id`, `city_name`, `country_id`) VALUES
+(1, 'Mallaca', 1),
+(2, 'Kuching', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `country_id` int(11) NOT NULL,
+  `country_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`country_id`, `country_name`) VALUES
+(1, 'Malaysia'),
+(2, 'Italy'),
+(3, 'Thailand'),
+(4, 'Australia');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `destinations`
 --
 
 CREATE TABLE `destinations` (
   `destination_id` int(11) NOT NULL,
   `destination_name` varchar(100) NOT NULL,
-  `destination_country` varchar(256) NOT NULL,
-  `destination_city` varchar(256) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
   `destination_description` text DEFAULT NULL,
   `image_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -60,9 +101,9 @@ CREATE TABLE `destinations` (
 -- Dumping data for table `destinations`
 --
 
-INSERT INTO `destinations` (`destination_id`, `destination_name`, `destination_country`, `destination_city`, `destination_description`, `image_url`, `created_at`, `updated_at`) VALUES
-(1, 'Malaysia, Mallaca', 'Malaysia', 'Mallaca', 'Malaysia is one of the most beautiful countries. Old and spectacular buildings 5star hotels', '../../public/img/package-1.jpg', '2024-03-24 16:23:19', '2024-04-01 09:41:26'),
-(2, 'Malaysia, Kuching', 'Malaysia', 'Kuching', 'Kuching is one of the most beautiful cities in Malaysia. Old and spectacular buildings 5star hotels', '../../public/img/package-2.jpg', '2024-03-24 16:23:19', '2024-04-01 09:02:52');
+INSERT INTO `destinations` (`destination_id`, `destination_name`, `country_id`, `city_id`, `destination_description`, `image_url`, `created_at`, `updated_at`) VALUES
+(1, 'Malaysia, Mallaca', 1, 1, 'Malaysia is one of the most beautiful countries. Old and spectacular buildings 5star hotels', '../../public/img/package-1.jpg', '2024-03-24 16:23:19', '2024-04-02 13:50:06'),
+(2, 'Malaysia, Kuching', 1, 2, 'Kuching is one of the most beautiful cities in Malaysia. Old and spectacular buildings 5star hotels', '../../public/img/package-2.jpg', '2024-03-24 16:23:19', '2024-04-02 13:50:10');
 
 -- --------------------------------------------------------
 
@@ -103,7 +144,7 @@ CREATE TABLE `packages` (
   `package_description` text DEFAULT NULL,
   `package_price` decimal(20,2) NOT NULL,
   `package_length` int(10) NOT NULL,
-  `number_of_people` int(11) NOT NULL,
+  `spots_remaining` int(11) NOT NULL,
   `image_url` varchar(256) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -113,11 +154,11 @@ CREATE TABLE `packages` (
 -- Dumping data for table `packages`
 --
 
-INSERT INTO `packages` (`packages_id`, `destination_id`, `hotel_id`, `package_name`, `package_description`, `package_price`, `package_length`, `number_of_people`, `image_url`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Malaysia, Mallaca, Ibis hotel', 'Mallaca is a fascinating city of malayssia great for tourists.', 249.99, 3, 3, '', '2024-03-24 16:26:15', '2024-04-01 10:02:13'),
-(3, 2, 2, 'Malaysia, Kuching, Sheraton hotel', 'Sheraton Is a great hotel. Pools, best staffs and every kind of food you can imagine\r\n', 149.99, 4, 2, '', '2024-03-31 17:55:36', '2024-04-01 10:02:33'),
-(4, 2, 3, 'Malaysia, Kuching, Waterfront hotel', 'Waterfront hotel is one of the most popular hotels. Close to all malls in Kuching and great food.', 225.99, 4, 3, '', '2024-03-31 17:55:36', '2024-04-01 11:09:43'),
-(5, 2, 4, 'Malaysia, Kuching, Imperial hotel', 'Imperial hotel, one of the best hotels in kuching with great views and all kinds of services\r\n', 279.99, 5, 2, '', '2024-03-31 17:55:36', '2024-04-01 10:02:30');
+INSERT INTO `packages` (`packages_id`, `destination_id`, `hotel_id`, `package_name`, `package_description`, `package_price`, `package_length`, `spots_remaining`, `image_url`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'Malaysia, Mallaca, Ibis hotel', 'Mallaca is a fascinating city of malayssia great for tourists.', 249.99, 3, 28, '', '2024-03-24 16:26:15', '2024-04-02 12:09:40'),
+(3, 2, 2, 'Malaysia, Kuching, Sheraton hotel', 'Sheraton Is a great hotel. Pools, best staffs and every kind of food you can imagine\r\n', 149.99, 4, 45, '', '2024-03-31 17:55:36', '2024-04-02 12:09:44'),
+(4, 2, 3, 'Malaysia, Kuching, Waterfront hotel', 'Waterfront hotel is one of the most popular hotels. Close to all malls in Kuching and great food.', 225.99, 4, 55, '', '2024-03-31 17:55:36', '2024-04-02 12:09:48'),
+(5, 2, 4, 'Malaysia, Kuching, Imperial hotel', 'Imperial hotel, one of the best hotels in kuching with great views and all kinds of services\r\n', 279.99, 5, 12, '', '2024-03-31 17:55:36', '2024-04-02 12:09:52');
 
 -- --------------------------------------------------------
 
@@ -189,6 +230,19 @@ ALTER TABLE `bookings`
   ADD KEY `destination_id` (`package_id`);
 
 --
+-- Indexes for table `cities`
+--
+ALTER TABLE `cities`
+  ADD PRIMARY KEY (`city_id`),
+  ADD KEY `country_id` (`country_id`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`country_id`);
+
+--
 -- Indexes for table `destinations`
 --
 ALTER TABLE `destinations`
@@ -233,6 +287,18 @@ ALTER TABLE `bookings`
   MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `cities`
+--
+ALTER TABLE `cities`
+  MODIFY `city_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `destinations`
 --
 ALTER TABLE `destinations`
@@ -273,6 +339,12 @@ ALTER TABLE `bookings`
   ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`package_id`) REFERENCES `destinations` (`destination_id`),
   ADD CONSTRAINT `bookings_ibfk_3` FOREIGN KEY (`package_id`) REFERENCES `packages` (`packages_id`);
+
+--
+-- Constraints for table `cities`
+--
+ALTER TABLE `cities`
+  ADD CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`country_id`);
 
 --
 -- Constraints for table `packages`
