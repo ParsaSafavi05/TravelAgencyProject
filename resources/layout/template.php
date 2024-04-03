@@ -50,7 +50,7 @@
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>Canada, Vancouver, Street 123</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+012 345 6789</small>
+                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>+1 (416) 555-1234</small>
                     <small class="text-light"><i class="fa fa-envelope-open me-2"></i>info@parstravel.com</small>
                 </div>
             </div>
@@ -132,10 +132,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">ParsTravel</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        
+                        &copy; <a class="border-bottom" href="#">ParsTravel</a>, All Right Reserved.                        
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">

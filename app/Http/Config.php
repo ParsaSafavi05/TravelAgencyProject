@@ -10,4 +10,5 @@ class Config {
     const USERNAME = 'root';
     const PASSWORD = '';
     const DBNAME = 'parstravel_db';
+    const ERROR_404_PAGE = '../resources/notfound/index';
 }

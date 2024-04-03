@@ -40,7 +40,7 @@ class LoginController extends BaseController{
         foreach ($userData as $user) {
             $user;
         }
-        $_SESSION['msg'] = 'Login Successful';
+        
         $_SESSION['UserLoggedIn'] = $user['user_id'];
         return $this->redirect('index',$user['user_id']);
 
@@ -48,7 +48,7 @@ class LoginController extends BaseController{
     
     else{
 
-        $_SESSION['msg'] = 'Wrong Email Or Password';
+        $_SESSION['msg'] = '1';
         return $this->redirect('index','');
         
     }

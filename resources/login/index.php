@@ -41,11 +41,8 @@ $content .= '
 	<div class="main-w3layouts wrapper">
 		<div class="main-agileinfo">
 			<div class="agileits-top">';
-				session_start();
 				if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
-					if ($_SESSION['msg'] == 'Login Seccessful') {
-						$content .= "<div class='alert alert-success'>Login Successfull!!</div>";
-					}else{
+					if ($_SESSION['msg'] == '1') {
 						$content .= "<div class='alert alert-danger'>Wrong Email Or Password</div>";
 					}
 				}

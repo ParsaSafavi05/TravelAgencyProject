@@ -1,6 +1,6 @@
 <?php
 use App\Models\DB;
-
+$i = "'";
 session_start();
 if (isset($_SESSION['UserLoggedIn']) && !empty($_SESSION['UserLoggedIn'])) {
                         
@@ -32,7 +32,7 @@ $content .= '
     <div class="row justify-content-center py-5">
         <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Enjoy Your Vacation With Us</h1>
-            <p class="fs-4 text-white mb-4 animated slideInDown">Tempor erat elitr rebum at clita diam amet diam et eos erat ipsum lorem sit</p>
+            <p class="fs-4 text-white mb-4 animated slideInDown">Experience the world in style with ParsTravel</p>
             <div class="position-relative w-75 mx-auto animated slideInDown">
                 <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Eg: Thailand">
                 <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;">Search</button>
@@ -57,8 +57,10 @@ $content .= '
     <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
         <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
         <h1 class="mb-4">Welcome to <span class="text-primary">ParsTravel</span></h1>
-        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
+        <p class="mb-4">Parstravel, a beacon in the realm of wanderlust, offers an unparalleled journey through
+         the tapestry of destinations across the globe. Established on the principles of passion, precision, 
+         and personalized service, Parstravel has redefined the essence of travel.</p>
+        <p class="mb-4">With a team of seasoned experts who possess an intimate knowledge of the world'.$i.'s most enchanting destinations, Parstravel transforms mere itineraries into unforgettable odysseys. From luxurious accommodations to immersive cultural encounters, every aspect of the voyage is tailored to perfection, promising an authentic and enriching travel experience.</p>
         <div class="row gy-2 gx-4 mb-4">
             <div class="col-sm-6">
                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>First Class Flights</p>
@@ -180,7 +182,7 @@ $content .= '
 </div>
 </div>
 </div>
-<!-- Destination Start -->
+<!-- Destination End -->
 
 
 <!-- Package Start -->
@@ -194,7 +196,7 @@ $content .= '
     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
         <div class="package-item">
             <div class="overflow-hidden">
-                <img class="img-fluid" src="img/package-1.jpg" alt="">
+                <img class="img-fluid" src="../../public/img/package-1.jpg" alt="">
             </div>
             <div class="d-flex border-bottom">
                 <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>Thailand</small>
@@ -221,7 +223,7 @@ $content .= '
     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
         <div class="package-item">
             <div class="overflow-hidden">
-                <img class="img-fluid" src="img/package-2.jpg" alt="">
+                <img class="img-fluid" src="../../public/img/package-2.jpg" alt="">
             </div>
             <div class="d-flex border-bottom">
                 <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>Indonesia</small>
@@ -248,7 +250,7 @@ $content .= '
     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
         <div class="package-item">
             <div class="overflow-hidden">
-                <img class="img-fluid" src="img/package-3.jpg" alt="">
+                <img class="img-fluid" src="../../public/img/package-3.jpg" alt="">
             </div>
             <div class="d-flex border-bottom">
                 <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i>Malaysia</small>

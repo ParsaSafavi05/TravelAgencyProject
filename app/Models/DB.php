@@ -62,6 +62,15 @@ class DB
         return $this;
     }
 
+    public function selectdistinct($columns)
+    {
+        if (is_string($columns)) {
+            self::$query = "SELECT DISTINCT $columns FROM ".self::$table;
+        } 
+
+        return $this;
+    }
+
     public function value($column) {
         $result = $this->get($column);
         return $result ? $result[$column] : null;
