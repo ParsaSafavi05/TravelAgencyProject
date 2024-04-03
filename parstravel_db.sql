@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2024 at 01:05 PM
+-- Generation Time: Apr 03, 2024 at 03:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,18 +67,19 @@ INSERT INTO `cities` (`city_id`, `city_name`, `country_id`) VALUES
 
 CREATE TABLE `countries` (
   `country_id` int(11) NOT NULL,
-  `country_name` varchar(255) NOT NULL
+  `country_name` varchar(255) NOT NULL,
+  `active` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `countries`
 --
 
-INSERT INTO `countries` (`country_id`, `country_name`) VALUES
-(1, 'Malaysia'),
-(2, 'Italy'),
-(3, 'Thailand'),
-(4, 'Australia');
+INSERT INTO `countries` (`country_id`, `country_name`, `active`) VALUES
+(1, 'Malaysia', 1),
+(2, 'Italy', 0),
+(3, 'Thailand', 0),
+(4, 'Australia', 0);
 
 -- --------------------------------------------------------
 
