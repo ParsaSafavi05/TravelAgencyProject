@@ -9,6 +9,7 @@ class PackagesController extends BaseController{
     public function index()
     {
         $countries = DB::table('countries')
+        ->where('countries.active','=','1')
         ->get();
         
         
@@ -22,10 +23,6 @@ class PackagesController extends BaseController{
     {
         $country_id = Request::getParam('id');
         $packages = DB::table('packages')
-        // ->select('packages.packages_id, packages.package_name, packages.package_price, 
-        // packages.spots_remaining, packages.package_length, packages.package_description, 
-        // destinations.destination_name, hotels.hotel_rating, hotels.hotel_name, destinations.image_url,
-        //  country.country_name')
         ->join('destinations','packages.destination_id','destinations.destination_id')
         ->join('hotels','packages.hotel_id','hotels.hotel_id')
         ->join('countries','destinations.country_id','countries.country_id')

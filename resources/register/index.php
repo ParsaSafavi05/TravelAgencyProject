@@ -12,6 +12,7 @@ if (isset($_SESSION['UserLoggedIn']) && !empty($_SESSION['UserLoggedIn'])) {
 
         
 $content = '
+<a href="../register/index" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
 
 <link href="../../public/css/registerStyle.css" rel="stylesheet">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
