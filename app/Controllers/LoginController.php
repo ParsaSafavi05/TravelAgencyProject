@@ -26,30 +26,35 @@ class LoginController extends BaseController{
        ->where('email', '=', $email)
        ->and('password', '=', $password)
        ->get();
-       
-       // Convert JSON string to associative array
+
        $userData = json_decode($user, true);
        
        session_start();
        if (!empty($userData)) {
 
-           
-        //    $id = DB::table('users')
-        //    ->where('email', '=', $email)
-        //    ->get('id');
+
         foreach ($userData as $user) {
             $user;
         }
         
-        $_SESSION['UserLoggedIn'] = $user['user_id'];
-        return $this->redirect('index',$user['user_id']);
+        if ($user['role_id'] === '1') {
+
+            $_SESSION['isAdmin'] = $user['user_id'];
+            return $this->redirect('../adminpanel/index');
+
+        }else{
+            
+            $_SESSION['UserLoggedIn'] = $user['user_id'];
+            return $this->redirect('index',$user['user_id']);
+
+        }
 
         } 
     
     else{
 
         $_SESSION['msg'] = '1';
-        return $this->redirect('index','');
+        return $this->redirect('index');
         
     }
 }

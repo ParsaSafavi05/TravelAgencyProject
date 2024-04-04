@@ -1,17 +1,12 @@
 <?php
 use App\Models\DB;
 $i = "'";
-if (isset($_SESSION['UserLoggedIn']) && !empty($_SESSION['UserLoggedIn'])) {
+session_start();
+if (isset($_SESSION['isAdmin']) && !empty($_SESSION['isAdmin'])) {
                         
-    $userinfo = DB::table('users')
-    ->where('user_id','=',$_SESSION['UserLoggedIn'])
-    ->get();
-    $userinfoArray = json_decode($userinfo, true);
-
-    $firstname = $userinfoArray[0]['firstname'];
-    $lastname = $userinfoArray[0]['lastname'];
+    
                     
-    $content = '<a href="../user/info" class="btn btn-primary rounded-pill py-2 px-4">'.$firstname.' '.$lastname.'</a>';
+    $content = '<a href="adminpanel/info" class="btn btn-primary rounded-pill py-2 px-4">'.'firstname'.' '.'lastname'.'</a>';
 
     }
     else{
@@ -28,7 +23,7 @@ $content .= '
     <div class="container py-5">
         <div class="row justify-content-center py-5">
             <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                <h1 class="display-3 text-white mb-3 animated slideInDown">'.$firstname.' '.$lastname.$i.'s Profile</h1>
+                <h1 class="display-3 text-white mb-3 animated slideInDown">'.'firstname'.' '.'lastname'.'s Profile</h1>
             </div>
         </div>
     </div>
@@ -113,5 +108,5 @@ $content .= '
     ';
 
 
-$this->layout($content);
+$this->adminlayout($content);
 ?>

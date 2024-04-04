@@ -1,7 +1,6 @@
 <?php
 use App\Models\DB;
 
-session_start();
 if (isset($_SESSION['UserLoggedIn']) && !empty($_SESSION['UserLoggedIn'])) {
                         
     $userinfo = DB::table('users')
@@ -49,14 +48,14 @@ $content .= '
         <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <h5>Get In Touch</h5>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos</p>
+                <p class="mb-4">Share your feedback with us we will be in touch with you very soon.</p>
                 <div class="d-flex align-items-center mb-4">
                     <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
                         <i class="fa fa-map-marker-alt text-white"></i>
                     </div>
                     <div class="ms-3">
                         <h5 class="text-primary">Office</h5>
-                        <p class="mb-0">123 Street, New York, USA</p>
+                        <p class="mb-0">Canada, Vancouver, Street 123</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center mb-4">
@@ -65,7 +64,7 @@ $content .= '
                     </div>
                     <div class="ms-3">
                         <h5 class="text-primary">Mobile</h5>
-                        <p class="mb-0">+012 345 67890</p>
+                        <p class="mb-0">+1 (416) 555-1234</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -74,7 +73,7 @@ $content .= '
                     </div>
                     <div class="ms-3">
                         <h5 class="text-primary">Email</h5>
-                        <p class="mb-0">info@example.com</p>
+                        <p class="mb-0">info@parstravel.com</p>
                     </div>
                 </div>
             </div>
@@ -92,16 +91,21 @@ $content .= '
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                <input type="text" class="form-control" id="name" value="'.$user[0]->firstname.' '.$user[0]->lastname.'" placeholder="Your Name">
                                 <label for="name">Your Name</label>
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                        </div>';
+
+                        if (isset($_SESSION['UserLoggedIn'])) {
+                            $content .= '<div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                <label for="email">Your Email</label>
+                                <input type="email" class="form-control" id="email" value="'.$user[0]->email.'" placeholder="Your Email">
+                                <label for="email">Email Address</label>
                             </div>
-                        </div>
+                        </div>';
+                        }
+                        
+                        $content .= '
                         <div class="col-12">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="subject" placeholder="Subject">

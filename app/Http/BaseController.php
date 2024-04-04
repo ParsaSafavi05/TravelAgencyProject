@@ -2,6 +2,8 @@
 namespace App\Http;
 
 use App\Http\Config;
+use ArrayAccess;
+
 class BaseController {
     public function view($view, array $data)
     {
@@ -13,6 +15,13 @@ class BaseController {
     public function layout($content)
     {
         $getTemplate = file_get_contents(Config::LAYOUT_PATH);
+        echo str_replace('{{content}}', $content, $getTemplate);
+    }
+    
+    public function adminlayout($content)
+    {
+        
+        $getTemplate = file_get_contents(Config::ADMIN_LAYOUT_PATH);
         echo str_replace('{{content}}', $content, $getTemplate);
     }
 

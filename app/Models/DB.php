@@ -96,6 +96,36 @@ class DB
         return true;
     }
 
+
+    public function update(array $data, $primaryKey = 'id')
+    {
+        $columns = [];
+        foreach ($data as $column => $value) {
+            if ($column !== $primaryKey) {
+                $columns[] = "{$column} = '{$value}'";
+            }
+        }
+        $columnsStr = implode(', ', $columns);
+    
+        $whereClause = "{$primaryKey} = '{$data[$primaryKey]}'";
+    
+        $query = "UPDATE " . self::$table . " SET " . $columnsStr . " WHERE " . $whereClause;
+    
+        self::$query = mysqli_query(self::$connstr, $query);
+
+        $rowsAffected = mysqli_affected_rows(self::$connstr);
+
+        if ($rowsAffected === 0) {
+            return false;
+        }else{
+
+            return true;
+        }
+    }
+    
+
+        
+
     public function join($table, $firstColumn, $secondColumn, $alias = null)
     {
         $alias = $alias ? $alias : $table; // Use the table name as the alias if not provided
