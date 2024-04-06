@@ -1,6 +1,6 @@
 function changeTab(tabId) {
     // Get all tab elements
-    var tabs = document.querySelectorAll(".nav-item");
+    let tabs = document.querySelectorAll(".nav-item");
     
     // Remove 'active' class from all tabs
     tabs.forEach(function(tab) {
@@ -10,3 +10,4 @@ function changeTab(tabId) {
     // Add 'active' class to the clicked tab
     document.getElementById(tabId).classList.add("active");
 }
+

@@ -32,10 +32,14 @@ $content .= '
     </div>
     </div>
 
-<head>
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="../../public/css/registerStyle.css" rel="stylesheet">
-</head>
+
+	<div class="container-xxl py-5">
+    <div class="container">
+    <div class="row g-4">
+        <div class="col-lg-4"></div>
+            <div class="col-lg-4 justify-content-center col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+
+
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
@@ -49,29 +53,36 @@ $content .= '
 				session_unset();
 				session_destroy();
 
-				$content .= '<form action="validate" method="post">
-					<input class="text email" type="email" name="email" placeholder="Email Address" required="">
-					<input class="text" type="password" name="password" placeholder="Password" required="">
-					<input type="submit" value="Login">
-                    <p>Dont have an account? Click <a class="text-green" href="../register/index">here</a></p>
-                    </form>
+				$content .= '
+				<form action="validate" method="post">
+				<div class="row g-3">
+					
+					<div class="col-md-12">
+						<div class="form-floating">
+							<input type="text" class="form-control text-dark" id="email" name="email">
+							<label for="email">Email Address</label>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-floating">
+							<input type="password" class="form-control text-dark" id="password" name="password">
+							<label for="password">Password</label>
+						</div>
+					</div>
+					<div class="col-12">
+					<p class="text-center">Don'."'".'t have an account? Click <a class="text-green " href="../login/index">here</a></p>
+						<button class="btn btn-primary w-100 py-3" type="submit">Login</button>
+					</div>
+					</div>
+				</form>
+			</div>
+			</div>
 			</div>
 		</div>
-		<!-- copyright -->
+		</div>
+		</div>
+
 		
-		<!-- //copyright -->
-		<ul class="colorlib-bubbles">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
 	</div>
 	<!-- //main -->
 ';

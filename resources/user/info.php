@@ -41,7 +41,7 @@ $content .= '
         <div class="row g-4">
             <div class="col-lg-3"></div>
                 <div class="col-lg-6 justify-content-center col-md-12 wow fadeInUp" data-wow-delay="0.5s">';
-                if($_SESSION['msg'] != null){
+                if(!empty($_SESSION['msg'])){
                     if ($_SESSION['msg'] === '1') {
                         $content .= '<div class="alert alert-success">Update Successful!</div>';
                     }elseif ($_SESSION['msg'] === '2') {

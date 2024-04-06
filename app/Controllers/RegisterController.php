@@ -35,7 +35,7 @@ class RegisterController extends BaseController{
                 //check if user exists
                 if(strlen($getUsers) > 2){
 
-                    $_SESSION['msg'] = 'User Already Exists!!';
+                    $_SESSION['msg'] = 'User Already Exists';
                     return $this->redirect('index','');
 
                 }
@@ -51,7 +51,7 @@ class RegisterController extends BaseController{
 
                         );
 
-                        $_SESSION['msg'] = 'Signup Successfull!!';
+                        $_SESSION['msg'] = '1';
 
                         return $this->redirect('index','');
                         

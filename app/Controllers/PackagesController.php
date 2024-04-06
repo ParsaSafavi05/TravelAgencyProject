@@ -32,4 +32,17 @@ class PackagesController extends BaseController{
         return $this->view('packages/country', ['packages' => $packages]);
 
     }
+
+    public function book()
+    {
+        $package_id = Request::getParam('id');
+        $packages = DB::table('packages')
+        ->join('destinations','packages.destination_id','destinations.destination_id')
+        ->join('hotels','packages.hotel_id','hotels.hotel_id')
+        ->join('countries','destinations.country_id','countries.country_id')
+        ->join('cities','destinations.city_id','cities.city_id')
+        ->where('packages.package_id','=',$package_id)
+        ->get();
+        return $this->view('packages/book',['packages' => $packages]);
+    }
 }
