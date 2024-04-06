@@ -126,7 +126,7 @@ if (!empty($package)) {
                                     </div>
                                     <div class="col-md-6">
                                     <div class="form-floating">
-                                    <input type="text" class="form-control bg-transparent text-light" id="total_price" value="'.$userinfoArray[0]['email'].'">
+                                    <input type="text" class="form-control bg-transparent text-light" id="total_pricee:\Downloads\parstravel_db.sql" value="'.$userinfoArray[0]['email'].'">
                                     <label for="total_price">Total Price</label>
                                 </div>
                                     </div>

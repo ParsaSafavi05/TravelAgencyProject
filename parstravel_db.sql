@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2024 at 10:51 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Apr 06, 2024 at 01:56 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,8 +32,7 @@ CREATE TABLE `bookings` (
   `user_id` int(11) DEFAULT NULL,
   `package_id` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `num_of_adults` int(11) DEFAULT NULL,
-  `num_of_children` int(11) DEFAULT NULL,
+  `num_of_passangers` int(2) DEFAULT NULL,
   `total_price` decimal(10,2) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -138,7 +137,7 @@ INSERT INTO `hotels` (`hotel_id`, `hotel_name`, `hotel_location`, `hotel_rating`
 --
 
 CREATE TABLE `packages` (
-  `packages_id` int(11) NOT NULL,
+  `package_id` int(11) NOT NULL,
   `destination_id` int(11) NOT NULL,
   `hotel_id` int(11) NOT NULL,
   `package_name` varchar(256) NOT NULL,
@@ -155,7 +154,7 @@ CREATE TABLE `packages` (
 -- Dumping data for table `packages`
 --
 
-INSERT INTO `packages` (`packages_id`, `destination_id`, `hotel_id`, `package_name`, `package_description`, `package_price`, `package_length`, `spots_remaining`, `image_url`, `created_at`, `updated_at`) VALUES
+INSERT INTO `packages` (`package_id`, `destination_id`, `hotel_id`, `package_name`, `package_description`, `package_price`, `package_length`, `spots_remaining`, `image_url`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'Malaysia, Mallaca, Ibis hotel', 'Mallaca is a fascinating city of malayssia great for tourists.', 249.99, 3, 28, '', '2024-03-24 16:26:15', '2024-04-02 12:09:40'),
 (3, 2, 2, 'Malaysia, Kuching, Sheraton hotel', 'Sheraton Is a great hotel. Pools, best staffs and every kind of food you can imagine\r\n', 149.99, 4, 45, '', '2024-03-31 17:55:36', '2024-04-02 12:09:44'),
 (4, 2, 3, 'Malaysia, Kuching, Waterfront hotel', 'Waterfront hotel is one of the most popular hotels. Close to all malls in Kuching and great food.', 225.99, 4, 55, '', '2024-03-31 17:55:36', '2024-04-02 12:09:48'),
@@ -215,8 +214,9 @@ INSERT INTO `users` (`user_id`, `email`, `firstname`, `lastname`, `phonenumber`,
 (17, 'ahmad@yahoo.com', 'ahmad', 'ahmadi', '09138885241', NULL, 'f190ce9ac8445d249747cab7be43f7d5', '2024-03-22 14:04:07', '2024-03-22 15:29:46', 3),
 (18, 'heshmat@yahoo.com', 'heshmat', 'gholami', '8588591782', NULL, '81dc9bdb52d04dc20036dbd8313ed055', '2024-03-22 14:05:09', '2024-03-22 15:29:48', 3),
 (19, 'mehdi@yahoo.com', 'mehdi', 'akbari', '09148333567', NULL, '81dc9bdb52d04dc20036dbd8313ed055', '2024-03-22 15:28:41', '2024-03-22 15:28:41', 3),
-(20, 'parsasafavi@gmail.com', 'Parsa', 'Safavi', '8588591782', NULL, '81dc9bdb52d04dc20036dbd8313ed055', '2024-03-23 12:11:20', '2024-03-23 12:11:20', 3),
-(21, 'ascasocijaspicjjpi@gmail.com', 'Parsa', 'Safavi', '8588591782', NULL, '81dc9bdb52d04dc20036dbd8313ed055', '2024-03-31 14:32:39', '2024-03-31 14:32:39', 3);
+(20, 'parsasafavi@gmail.com', 'Parsa', 'Safavi', '8588591782', '400 W Broadway ', '81dc9bdb52d04dc20036dbd8313ed055', '2024-03-23 12:11:20', '2024-04-05 14:22:51', 3),
+(21, 'ascasocijaspicjjpi@gmail.com', 'Parsa', 'Safavi', '8588591782', NULL, '81dc9bdb52d04dc20036dbd8313ed055', '2024-03-31 14:32:39', '2024-03-31 14:32:39', 3),
+(22, 'c@gmail.com', 'Parsa', 'Safavi', '8588591782', NULL, 'e034fb6b66aacc1d48f445ddfb08da98', '2024-04-05 11:43:17', '2024-04-05 11:43:17', 3);
 
 --
 -- Indexes for dumped tables
@@ -259,7 +259,7 @@ ALTER TABLE `hotels`
 -- Indexes for table `packages`
 --
 ALTER TABLE `packages`
-  ADD PRIMARY KEY (`packages_id`),
+  ADD PRIMARY KEY (`package_id`),
   ADD KEY `destination_id` (`destination_id`),
   ADD KEY `hotel_id` (`hotel_id`);
 
@@ -315,7 +315,7 @@ ALTER TABLE `hotels`
 -- AUTO_INCREMENT for table `packages`
 --
 ALTER TABLE `packages`
-  MODIFY `packages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -327,7 +327,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
@@ -339,7 +339,7 @@ ALTER TABLE `users`
 ALTER TABLE `bookings`
   ADD CONSTRAINT `bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `bookings_ibfk_2` FOREIGN KEY (`package_id`) REFERENCES `destinations` (`destination_id`),
-  ADD CONSTRAINT `bookings_ibfk_3` FOREIGN KEY (`package_id`) REFERENCES `packages` (`packages_id`);
+  ADD CONSTRAINT `bookings_ibfk_3` FOREIGN KEY (`package_id`) REFERENCES `packages` (`package_id`);
 
 --
 -- Constraints for table `cities`
