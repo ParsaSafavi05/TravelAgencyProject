@@ -81,7 +81,7 @@ $content .= '
                 <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7 Service</p>
             </div>
         </div>
-        <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+        <a class="btn btn-primary py-3 px-5 mt-2" href="../aboutus/index">Read More</a>
     </div>
 </div>
 </div>
@@ -214,8 +214,7 @@ $content .= '
                 </div>
                 <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos</p>
                 <div class="d-flex justify-content-center mb-2">
-                    <a href="../packages/readmore" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                    <a href="../packages/index" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
+                    <a href="../packages/index" class="btn btn-sm btn-primary px-3 rounded-pill" >Book Now</a>
                 </div>
             </div>
         </div>
@@ -241,8 +240,7 @@ $content .= '
                 </div>
                 <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos</p>
                 <div class="d-flex justify-content-center mb-2">
-                    <a href="../packages/readmore" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                    <a href="../packages/index" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
+                <a href="../packages/index" class="btn btn-sm btn-primary px-3 rounded-pill" >Book Now</a>
                 </div>
             </div>
         </div>
@@ -268,8 +266,7 @@ $content .= '
                 </div>
                 <p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam eos</p>
                 <div class="d-flex justify-content-center mb-2">
-                    <a href="../packages/readmore" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                    <a href="../packages/index" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
+                    <a href="../packages/index" class="btn btn-sm btn-primary px-3 rounded-pill" >Book Now</a>
                 </div>
             </div>
         </div>

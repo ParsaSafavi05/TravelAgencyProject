@@ -1,20 +1,16 @@
 <?php
-use App\Models\DB;
 
-session_start();
 if (isset($_SESSION['UserLoggedIn']) && !empty($_SESSION['UserLoggedIn'])) {
                         
-    $userinfo = DB::table('users')
-    ->where('user_id','=',$_SESSION['UserLoggedIn'])
-    ->get();
-    $userinfoArray = json_decode($userinfo, true);
-
-    $firstname = $userinfoArray[0]['firstname'];
-    $lastname = $userinfoArray[0]['lastname'];
+    
                     
-    $content = '<a href="../user/info" class="btn btn-primary rounded-pill py-2 px-4">'.$firstname.' '.$lastname.'</a>';
+    $content = '<a href="../user/info" class="btn btn-primary rounded-pill py-2 px-4">'.$userinfo[0]->firstname.' '.$userinfo[0]->lastname.'</a>';
 
+    }elseif(isset($_SESSION['isAdmin']) && !empty($_SESSION['isAdmin'])){
+
+        $content = '<a href="../adminpanel/index" class="btn btn-primary rounded-pill py-2 px-4">'.$userinfo[0]->firstname.' '.$userinfo[0]->lastname.'</a>';
     }
+    
     else{
 
         $content = '<a href="../register/index" class="btn btn-primary rounded-pill py-2 px-4">Register</a>';
@@ -46,15 +42,24 @@ $content .= '
             <div class="col-lg-6">
                 <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
                 <h1 class="mb-4">Page Not Found</h1>
-                <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?</p>
-                <a class="btn btn-primary rounded-pill py-3 px-5" href="index">Go Back To Home</a>
-            </div>
+                <p class="mb-4">We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or try to use a search?</p>';
+                if (isset($_SESSION['isAdmin'])) {
+                    $content .= '<a class="btn btn-primary rounded-pill py-3 px-5" href="../adminpanel/index">Go Back To Dashboard</a>';
+                }else{
+                    $content .= '<a class="btn btn-primary rounded-pill py-3 px-5" href="../home/index">Go Back To Home</a>';
+
+                }
+            $content .= '</div>
         </div>
     </div>
 </div>
 
     ';
 
+if (isset($_SESSION['isAdmin'])) {
+    $this->adminlayout($content);
+}else{
 
-$this->layout($content);
+    $this->layout($content);
+}
 ?>

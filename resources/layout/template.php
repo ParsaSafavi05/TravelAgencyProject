@@ -3,13 +3,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Tourist - Travel Agency HTML Template</title>
+    <title>ParsTravel - Travel Agency</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-
     <!-- Favicon -->
-    <link href="../../public/img/favicon.ico" rel="icon">
+    <link href="../../public/img/fav-icon.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,10 +67,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a onclick=changeTab(home) id="home" href="../home/index" class="nav-item nav-link active">Home</a>
-                    <a onclick=changeTab(about) id="about" href="../aboutus/index" class="nav-item nav-link">About</a>
-                    <a onclick=changeTab(contact) id="contact" href="../contact/index" class="nav-item nav-link">Contact</a>
-                    <a onclick=changeTab(pakcages) id="packages" href="../packages/index" class="nav-item nav-link">Packages</a>
+                    <a onclick="changeTab('home')" id="home" href="../home/index" class="nav-item nav-link active">Home</a>
+                    <a onclick="changeTab('about')" id="about" href="../aboutus/index" class="nav-item nav-link">About</a>
+                    <a onclick="changeTab('contact')" id="contact" href="../contact/index" class="nav-item nav-link">Contact</a>
+                    <a onclick="changeTab('packages')" id="packages" href="../packages/index" class="nav-item nav-link">Packages</a>
                 </div>       
                 
        {{content}}
@@ -146,6 +145,8 @@
 
 
     <!-- JavaScript Libraries -->
+    <script src="../../public/js/custom.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../public/lib/wow/wow.min.js"></script>
@@ -158,7 +159,7 @@
 
     <!-- Template Javascript -->
     <script src="../../public/js/main.js"></script>
-    <script src="../../public/js/custom.js"></script>
+    
 </body>
 
 </html>

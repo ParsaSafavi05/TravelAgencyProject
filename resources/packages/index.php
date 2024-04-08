@@ -1,7 +1,6 @@
 <?php
 use App\Models\DB;
 
-session_start();
 if (isset($_SESSION['UserLoggedIn']) && !empty($_SESSION['UserLoggedIn'])) {
                         
     $userinfo = DB::table('users')
@@ -79,11 +78,58 @@ $content .= '<div class="container-xxl py-5">
                 </div>
             ';
             }
+
+            if(isset($data['userpackages'])){
+                $content .= '<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Your Packages</h6>
+            </div>';
+                $content .= '<div class="row g-4 justify-content-left">';
+            
+            foreach (json_decode($data['userpackages']) as $userpackage) {
+                $content .= '
+                <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class=" bg-white text-center text-primary px-3">'.$userpackage->package_name.'</h6>
+                    <div class="package-item">
+                    <div class="overflow-hidden">
+                    <img class="img-fluid" src="'.$userpackage->image_url.'" alt="">
+                    </div>
+                    <div class="d-flex border-bottom">
+                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>'.$userpackage->package_length.' days</small>
+                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-user text-primary me-2"></i>'.$userpackage->num_of_passangers.' Passengers</small>
+                    </div>
+                    <div class="d-flex border-bottom">
+                    <small class="flex-fill text-center border py-2"><i class="fa fa-user text-primary me-2"></i>'.$userpackage->status.'</small>
+                </div>
+                    <div class="text-center p-4">
+                    <h3 class="mb-0">'.$userpackage->total_price.'</h3>
+                    <div class="mb-3">';
+
+                    $content .= '</div>
+                    <div class="d-flex justify-content-center mb-2">';
+                        if ($userpackage->status === 'unpaid') {
+                            $content .= '<a href="#" class="btn btn-sm btn-primary px-4 rounded-pill">Pay</a>';
+                        }else{
+
+                            $content .= '<a href="#" class="btn btn-sm btn-primary px-4 rounded-pill">Details</a>';
+                        }
+                    $content .= '</div>
+                </div>
+            </div>
+                </div>
+            ';
+                            }
+        }
+        
+            
+
             $content .= '
                 </div>
             </div>
         </div>
+        </div>
         
+
+           
         
         
         ';

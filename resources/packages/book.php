@@ -4,7 +4,6 @@ use App\Models\DB;
     $package = json_decode($data['packages']) ;
 
 
-session_start();
 if (isset($_SESSION['UserLoggedIn']) && !empty($_SESSION['UserLoggedIn'])) {
                         
     $userinfo = DB::table('users')
@@ -31,7 +30,11 @@ $content .= '
 // Navbar Start
 if (!empty($package)) {
     $content .= '
+    <head>
+    <link href="dist/the-datepicker.css" rel="stylesheet" />
+    <script src="dist/the-datepicker.js"></script>
     
+    </head>
     <div class="container-fluid bg-primary py-5 mb-5 hero-header">
     <div class="container py-5">
         <div class="row justify-content-center py-5">
@@ -103,41 +106,61 @@ if (!empty($package)) {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h1 class="text-white mb-4">Book A Tour</h1>
-                            <form>
+                            <h1 class="text-white mb-4">Book A Tour</h1>';
+                            
+
+                            $content .= '<form action="book_validate">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="number" class="form-control bg-transparent text-light" id="name" placeholder="Your Name" value="1" min="1" max="'.$package[0]->spots_remaining.'">
-                                            <label for="name">Number Of Passangers</label>
+                                            <input type="number" class="form-control bg-transparent text-light" id="numberofpassengers" name="numberofpassengers" placeholder="Your Name" value="1" min="1" max="'.$package[0]->spots_remaining.'">
+                                            <label for="numberofpassengers">Number Of Passangers</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+
+        
+                                            <input type="hidden" name="package_id" value="'.$package[0]->package_id.'">
+                                      
+                                            <div class="col-md-2">
+                                            <div class="form-floating">
+                                                <select class="form-select bg-light text-dark" id="month" name="month">
+                                                    <option value="01">Jan</option>
+                                                    <option value="02">Feb</option>
+                                                    <option value="03">Mar</option>
+                                                    <option value="04">Apr</option>
+                                                    <option value="05">May</option>
+                                                    <option value="06">Jun</option>
+                                                    <option value="07">Jul</option>
+                                                    <option value="08">Aug</option>
+                                                    <option value="09">Sept</option>
+                                                    <option value="10">Oct</option>
+                                                    <option value="11">Nov</option>
+                                                    <option value="12">Dec</option>
+                                                </select>
+                                            <label for="month">Month</label>
+                                            </div>
+                                        </div>
+
+                                    <div class="col-md-2">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control bg-transparent text-light" id="email" placeholder="Your Email" value="'.$userinfoArray[0]['email'].'">
-                                            <label for="email">Your Email</label>
+                                            <input type="number" class="form-control bg-light text-dark" id="day" name="day" value="1" min="1" max="31">
+                                            <label for="day">Day</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-floating date" id="date3" data-target-input="nearest">
-                                            <input type="text" class="form-control text-light bg-transparent datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
-                                            <label for="datetime">Date & Time</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                    <div class="form-floating">
-                                    <input type="text" class="form-control bg-transparent text-light" id="total_pricee:\Downloads\parstravel_db.sql" value="'.$userinfoArray[0]['email'].'">
-                                    <label for="total_price">Total Price</label>
-                                </div>
-                                    </div>
-                                    <div class="col-12">
+                                   
+                                    <div class="col-md-2">
                                         <div class="form-floating">
-                                            <textarea class="form-control bg-transparent" placeholder="Special Request" id="message" style="height: 100px"></textarea>
-                                            <label for="message">Special Request</label>
+                                            <select class="form-select bg-light text-dark" id="year" name="year">
+                                                <option value="2024">2024</option>
+                                                <option value="2025">2025</option>
+                                                <option value="2026">2026</option>
+                                            </select>
+                                        <label for="year">Year</label>
                                         </div>
                                     </div>
+                                   
                                     <div class="col-12">
-                                        <button class="btn btn-outline-light w-100 py-3" type="submit">Book Now</button>
+                                        <button class="btn btn-outline-light w-100 py-3" type="submit">Add To Cart</button>
                                     </div>
                                 </div>
                             </form>
@@ -186,7 +209,8 @@ if (!empty($package)) {
             </div>
         </div>
     </div>
-</div>';
+</div>
+';
 }
             
 

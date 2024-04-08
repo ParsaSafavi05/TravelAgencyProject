@@ -87,9 +87,9 @@ class DB
         return true;
     }   
 
-    public function delete($id)
+    public function delete($column, $id)
     {
-        self::$query = "delete from " . self::$table . " where id = {$id}";
+        self::$query = "delete from " . self::$table . " where {$column} = {$id}";
 
         self::$query = mysqli_query(self::$connstr, self::$query);
 

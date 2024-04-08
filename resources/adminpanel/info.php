@@ -1,20 +1,13 @@
 <?php
-use App\Models\DB;
 $i = "'";
-session_start();
 if (isset($_SESSION['isAdmin']) && !empty($_SESSION['isAdmin'])) {
                         
     
                     
-    $content = '<a href="adminpanel/info" class="btn btn-primary rounded-pill py-2 px-4">'.'firstname'.' '.'lastname'.'</a>';
+    $content = '<a href="info" class="btn btn-primary rounded-pill py-2 px-4">'.$user[0]->firstname.' '.$user[0]->lastname.'</a>';
 
-    }
-    else{
-
-
-        return $this->redirect('../login/index','');
-
-    }            
+  
+         
 
 $content .= '
 </div>
@@ -23,7 +16,7 @@ $content .= '
     <div class="container py-5">
         <div class="row justify-content-center py-5">
             <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                <h1 class="display-3 text-white mb-3 animated slideInDown">'.'firstname'.' '.'lastname'.'s Profile</h1>
+                <h1 class="display-3 text-white mb-3 animated slideInDown">'.$user[0]->firstname.' '.$user[0]->lastname.'s Profile</h1>
             </div>
         </div>
     </div>
@@ -36,15 +29,19 @@ $content .= '
         <div class="row g-4">
             <div class="col-lg-3"></div>
                 <div class="col-lg-6 justify-content-center col-md-12 wow fadeInUp" data-wow-delay="0.5s">';
-                if($_SESSION['msg'] != null){
-                    if ($_SESSION['msg'] === '1') {
-                        $content .= '<div class="alert alert-success">Update Successful!</div>';
-                    }elseif ($_SESSION['msg'] === '2') {
-                        $content .= '<div class="alert alert-warning">No changes were made.</div>';
+                if (isset($_SESSION['msg'])) {
+                    if($_SESSION['msg'] != null){
+                        if ($_SESSION['msg'] === '1') {
+                            $content .= '<div class="alert alert-success">Update Successful!</div>';
+                        }elseif ($_SESSION['msg'] === '2') {
+                            $content .= '<div class="alert alert-warning">No changes were made.</div>';
+                        }
+                       $_SESSION['msg'] = null;
                     }
-                   $_SESSION['msg'] = null;
                 }
-                $content .= '<form action="update" method="post">
+                
+                $content .= '
+                <form action="update" method="post">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
@@ -106,7 +103,14 @@ $content .= '
     <div class="main-agileinfo">
     <div class="agileits-top">
     ';
+    
+    }
+    else{
 
+
+        return $this->redirect('../login/index','');
+
+    }       
 
 $this->adminlayout($content);
 ?>

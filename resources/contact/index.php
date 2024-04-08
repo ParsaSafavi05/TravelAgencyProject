@@ -88,18 +88,34 @@ $content .= '
             </div>
             <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <form>
-                    <div class="row g-3">
-                        <div class="col-md-6">
+                    <div class="row g-3">';
+                    if (isset($_SESSION['UserLoggedIn'])) {
+                        $content .= '<div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" value="'.$user[0]->firstname.' '.$user[0]->lastname.'" placeholder="Your Name">
+                                <input type="text" disabled class="form-control text-dark" id="name" value="'.$user[0]->firstname.' '.$user[0]->lastname.'" placeholder="Your Name">
                                 <label for="name">Your Name</label>
                             </div>
                         </div>';
+                    }else{
+                        $content .= '<div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            <label for="name">Your Name</label>
+                        </div>
+                    </div>';
+                    }
 
                         if (isset($_SESSION['UserLoggedIn'])) {
                             $content .= '<div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" value="'.$user[0]->email.'" placeholder="Your Email">
+                                <input type="email" disabled class="form-control text-dark" id="email" value="'.$user[0]->email.'" placeholder="Your Email">
+                                <label for="email">Email Address</label>
+                            </div>
+                        </div>';
+                        }else{
+                            $content .= '<div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
                                 <label for="email">Email Address</label>
                             </div>
                         </div>';
