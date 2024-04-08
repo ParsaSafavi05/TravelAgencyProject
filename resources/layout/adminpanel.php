@@ -98,6 +98,9 @@
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">ParsTravel</a>, All Right Reserved.                        
                     </div>
+                    <div class="footer-menu">
+                            <p class="text-muted">Website designed by Parsa Safavi</p>
+                        </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
                             <a href="../adminpanel/index">Home</a>
